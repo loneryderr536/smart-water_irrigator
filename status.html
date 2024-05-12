@@ -21,7 +21,7 @@
     <div class="info">
         <div class="info-text">
             <h5>Humidity</h5>
-            <p id="humidity">10</p>
+            <p id="humidity"></p>
         </div>
         <div class="info-text">
             <h5>Temperature</h5>
@@ -41,23 +41,25 @@
     </div>
 
     <div class="slider">
-        <input type="range" id="gaugeValue" min="0" max="100" value="10" step="1" oninput="updateGauge()">
+        <input type="range" min="0" max="100" value="10" step="1" oninput="updateGauge()">
     </div>
 
-    <input type="range" id="newValue" min="0" max="100" value="10" step="1" oninput="writeUserData()">
 
     <p id="gaugeRangeText"></p>
 
+    <script type="module" src="scripts.js"></script>
     <script>
         const canvas = document.getElementById('gauge');
         const ctx = canvas.getContext('2d');
-        const gaugeValueInput = document.getElementById('gaugeValue');
+        const gaugeValueInputmeow = document.querySelector('#humidity').innerHTML;
+        const gaugeValueInput = Number(gaugeValueInputmeow)
+        console.log(gaugeValueInput)
         const gaugeRangeText = document.getElementById('gaugeRangeText');
 
         function updateGauge() {
-            const gaugeValue = gaugeValueInput.value;
+            const gaugeValue = gaugeValueInput;
             drawGauge(gaugeValue);
-            updateGaugeRange(humidity);
+            updateGaugeRange(gaugeValueInput);
         }
 
         function drawGauge(value) {
@@ -126,9 +128,8 @@
         }
 
         // Initial draw with default value
-        updateGauge();
+        drawGauge()
 
     </script>
-    <script type="module" src="scripts.js"></script>
 </body>
 <html>
