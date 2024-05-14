@@ -44,6 +44,9 @@ body {
 	align-items: center;
 }
 
+.login-input h1 {
+	margin-bottom: 5rem;
+}
 .login-input input {
 	width: 80%;
 	font-size: 2rem;

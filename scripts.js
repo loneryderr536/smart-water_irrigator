@@ -20,6 +20,12 @@ const firebaseConfig = {
 
     const temperature = ref(db, 'temperature');
     const humidity = ref(db, 'humidity');
+    const moisture = ref(db, 'Moisture');
+    const watersupply = ref(db, 'Waterpump');
+    const speed = ref(db, 'Speed');
+    const mode = ref(db, 'write/mode');
+
+    var dataValue
 
     console.log(document);
 
@@ -32,6 +38,13 @@ const firebaseConfig = {
     	}
     });
 
+    onValue(moisture, (snapshot) => {
+    	const data = snapshot.val();
+    	console.log(data);
+        const dataContainer = document.getElementById('moisture');
+        dataContainer.innerHTML = JSON.stringify(data, null, 2);
+    });
+
     onValue(temperature, (snapshot) => {
     	const data = snapshot.val();
     	console.log(data);
@@ -39,20 +52,46 @@ const firebaseConfig = {
         dataContainer.innerHTML = JSON.stringify(data, null, 2);
     });
 
-    onValue(humidity, (snapshot) => {
+    onValue(mode, (snapshot) => {
         const data = snapshot.val();
         console.log(data);
-        const dataContainer = document.getElementById('humidity');
+        const dataContainer = document.getElementById('mode-toggle');
+        dataContainer.innerHTML = JSON.stringify(data, null, 2);
+        dataValue = data;
+    });
+
+    onValue(watersupply, (snapshot) => {
+        const data = snapshot.val();
+        console.log(data);
+        const dataContainer = document.getElementById('water-supply-toggle');
         dataContainer.innerHTML = JSON.stringify(data, null, 2);
     });
 
-    function writeUserData() {
-      const db = getDatabase();
-      
-      set(ref(db, 'mspeed'), {
-        mspeed: 50
-      });
+    onValue(speed, (snapshot) => {
+        const data = snapshot.val();
+        console.log(data);
+        const dataContainer = document.getElementById('speed');
+        dataContainer.innerHTML = JSON.stringify(data, null, 2);
+    });
+
+
+function writeModeData() {
+  const db = getDatabase();
+    console.log(dataValue);
+  if ( dataValue == 3) {
+    console.log("it is off now");
+    set(ref(db, '/write'), {
+      mode : 2
+    });
   }
+  else {
+    set(ref(db, '/write'), {
+      mode : 3
+    });
+  }
+}
+
+writeModeData()
 
 
-updateGauge()
+
