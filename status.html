@@ -14,10 +14,6 @@
         </div>
     </nav>
 
-    <div class="gauge-container">
-        <canvas id="gauge" width="250" height="200"></canvas>
-    </div>
-
     <div class="info">
         <div class="info-text">
             <h5>Speed</h5>
@@ -42,14 +38,10 @@
             <h5>MODE</h5>
             <h3 id="mode-toggle">OFF</h3>
         </div>
-        <div class="switch">
-            <h5>WATER SUPPLY</h5>
-            <h3 id="water-supply-toggle">OFF</h3>
-        </div>
     </div>
 
     <div class="slider">
-        <input type="range" min="0" max="100" value="10" step="1" oninput="updateGauge()">
+        <input type="range" min="0" max="255" value="10" step="1" oninput="updateGauge()">
     </div>
 
 

@@ -3,14 +3,14 @@ import { getDatabase, get, set, ref, onValue } from "https://www.gstatic.com/fir
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-analytics.js";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyAqFWPyZVYy1lCboqQcKj7LpyjyjOY9TAI",
-    authDomain: "swis-4333b.firebaseapp.com",
-    databaseURL: "https://swis-4333b-default-rtdb.asia-southeast1.firebasedatabase.app",
-    projectId: "swis-4333b",
-    storageBucket: "swis-4333b.appspot.com",
-    messagingSenderId: "749781434804",
-    appId: "1:749781434804:web:0b620b13a077f8490032e1"
-  };
+  apiKey: "AIzaSyAqFWPyZVYy1lCboqQcKj7LpyjyjOY9TAI",
+  authDomain: "swis-4333b.firebaseapp.com",
+  databaseURL: "https://swis-4333b-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "swis-4333b",
+  storageBucket: "swis-4333b.appspot.com",
+  messagingSenderId: "749781434804",
+  appId: "1:749781434804:web:00e7ca2cf21376dd0032e1"
+};
 
     // Initialize Firebase
     const app = initializeApp(firebaseConfig);
@@ -20,7 +20,7 @@ const firebaseConfig = {
 
     const temperature = ref(db, 'temperature');
     const humidity = ref(db, 'humidity');
-    const moisture = ref(db, 'Moisture');
+    const moisture = ref(db, 'moisture_percentage');
     const watersupply = ref(db, 'Waterpump');
     const speed = ref(db, 'Speed');
     const mode = ref(db, 'write/mode');
